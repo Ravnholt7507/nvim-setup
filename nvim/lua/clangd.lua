@@ -98,6 +98,16 @@ return {
     end
   end,
   on_attach = function(client, bufnr)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<f2>', vim.lsp.buf.rename, opts)
+    vim.keymap.set({'n', 'x'}, '<f3>', function() vim.lsp.buf.format { async = true } end, opts)
+    vim.keymap.set('n', '<f4>', vim.lsp.buf.code_action, opts)
     vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdSwitchSourceHeader', function()
       switch_source_header(bufnr, client)
     end, { desc = 'Switch between source/header' })
@@ -105,9 +115,6 @@ return {
     vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdShowSymbolInfo', function()
       symbol_info(bufnr, client)
     end, { desc = 'Show symbol info' })
-
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- Autoformat on save
     if not client:supports_method('textDocument/willSaveWaitUntil')
@@ -119,14 +126,6 @@ return {
         end,
       })
     end
-
-    -- Enable automatic completion
-    vim.lsp.completion.enable(true, client.id, bufnr, {
-      autotrigger = true,
-      convert = function(item)
-        return { abbr = item.label:gsub('%b()', '') }
-      end,
-    })
 
     -- Enable inlay hints
     vim.lsp.inlay_hint.enable()
