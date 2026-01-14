@@ -15,12 +15,10 @@ return require('packer').startup(function(use)
     })
 
     -- Colorscheme
-    use({
-		'michaelfresco/space-terminal.nvim',
-        config = function()
-            vim.cmd.colorscheme('spaceterminal')
-        end
-    })
+    use {
+    'uloco/bluloco.nvim',
+    requires = { 'rktjmp/lush.nvim' }
+    }
 
     -- Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })

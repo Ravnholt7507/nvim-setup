@@ -1,9 +1,9 @@
- require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "c",
-    "cpp",
-    "lua",
-    "python",
-    "bash",
-  }
+require("nvim-treesitter").setup({
+    ensure_installed = {
+        "c",
+        "cpp",
+        "lua",
+        "python",
+        "bash",
+    }
 })
