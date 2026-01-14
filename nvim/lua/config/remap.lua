@@ -23,6 +23,8 @@ vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<C-x>', ':tabc<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<F1>', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><F1>", vim.diagnostic.setloclist, { desc = "Show buffer diagnostics" })
+
 
 -- Terminal stuff
 vim.keymap.set('n', '<leader>st', function ()
