@@ -89,4 +89,6 @@ return require('packer').startup(function(use)
     }
     -- git diffs
     use "sindrets/diffview.nvim"
+
+    use "github/copilot.vim"
 end)
