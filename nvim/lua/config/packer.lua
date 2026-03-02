@@ -23,9 +23,6 @@ return require('packer').startup(function(use)
     -- Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-    -- Undo Tree <leader>u
-    use 'mbbill/undotree'
-
     --LSP
     use({ 'williamboman/mason.nvim' })
     use({ 'williamboman/mason-lspconfig.nvim' })
