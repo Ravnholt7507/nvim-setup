@@ -14,12 +14,6 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     })
 
-    -- Colorscheme
-    use {
-    'uloco/bluloco.nvim',
-    requires = { 'rktjmp/lush.nvim' }
-    }
-
     -- Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
